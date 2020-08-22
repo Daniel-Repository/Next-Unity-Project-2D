@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: HighlightGround
+    uniqueID: 1084925015
+    locked: 0
