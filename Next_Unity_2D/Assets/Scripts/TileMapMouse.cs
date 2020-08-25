@@ -15,6 +15,7 @@ public class TileMapMouse : MonoBehaviour {
     public TileBase groundTile;
 
     //Other
+    private WorldTile worldTiles;
     public Text text;
     Vector3Int prevGridPos;
     bool highlightPlaced;
@@ -31,15 +32,12 @@ public class TileMapMouse : MonoBehaviour {
         Vector3Int gridPos = tilemapGround.WorldToCell(mousePos);
         highlightPlaced = tilemapHighlight.HasTile(gridPos);
 
-        //Clicking on a tile will currently create a WorldTile object and print its properties (to test class) 
+        //Clicking on a tile
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
-            var tile = new WorldTile {
-                TileGridPos = gridPos,
-                TileBase = tilemapGround.GetTile(gridPos),
-                TilemapMember = tilemapGround
-            };
-            string fortext = tile.TileGridPos + ", " + tile.TileBase + ", " + tile.TilemapMember;
-            text.text = fortext;
+            var tiles = TileManager.instance.tiles;
+            if (tiles.TryGetValue(gridPos, out worldTiles)) {
+                print(worldTiles.TileGridPos);
+            }
         }
 
         //Removing HL from previously hovered tile
