@@ -1,2 +1,2 @@
-# Next_Unity_Project_2D
+# Next-Unity-Project-2D
 No idea what this will be yet, but it's here!
