@@ -16,10 +16,10 @@ public class TileMapMouse : MonoBehaviour {
 
     //Other
     private WorldTile worldTiles;
-    public Text text;
     Vector3Int prevGridPos;
     bool highlightPlaced;
 
+    // Start is called before the first frame update
     private void Start() {
         tilemapGround = GameObject.Find("TileMap_GroundPieces").GetComponent<Tilemap>();
         tilemapHighlight = GameObject.Find("TileMap_GroundPiecesHighlight").GetComponent<Tilemap>();
@@ -30,9 +30,10 @@ public class TileMapMouse : MonoBehaviour {
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int gridPos = tilemapGround.WorldToCell(mousePos);
+
         highlightPlaced = tilemapHighlight.HasTile(gridPos);
 
-        //Clicking on a tile
+        //Clicking on a tile will use it's grid position to retrieve it's data from the dictionary
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
             var tiles = TileManager.instance.tiles;
             if (tiles.TryGetValue(gridPos, out worldTiles)) {

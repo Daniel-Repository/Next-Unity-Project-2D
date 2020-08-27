@@ -10,6 +10,7 @@ public class TileManager : MonoBehaviour {
     public Tilemap Tilemap;
     public Dictionary<Vector3Int, WorldTile> tiles;
 
+    //Called when we create an instance of this class
     private void Awake() {
 
         if (instance == null) {
@@ -19,9 +20,10 @@ public class TileManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        GetWorldtiles();
+        GetWorldTiles();
     }
 
+    //Instantiates our dictionary --> Adds every tile in our grid to it as a WorldTile object 
     private void GetWorldTiles() {
         tiles = new Dictionary<Vector3Int, WorldTile>();
 
