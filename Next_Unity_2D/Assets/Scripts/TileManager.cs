@@ -10,21 +10,17 @@ public class TileManager : MonoBehaviour {
     public Tilemap Tilemap;
     public Dictionary<Vector3Int, WorldTile> tiles;
 
-    //Called when we create an instance of this class
-    private void Awake() {
+    private void Start() {
+        populateWorldTiles();
+    }
 
-        if (instance == null) {
-            instance = this;
-        }
-        else if (instance != this) {
-            Destroy(gameObject);
-        }
-
-        GetWorldTiles();
+    public Dictionary<Vector3Int, WorldTile> getTilesDictionary() {
+        populateWorldTiles();
+        return tiles;
     }
 
     //Instantiates our dictionary --> Adds every tile in our grid to it as a WorldTile object 
-    private void GetWorldTiles() {
+    private void populateWorldTiles() {
         tiles = new Dictionary<Vector3Int, WorldTile>();
 
         foreach (Vector3Int pos in Tilemap.cellBounds.allPositionsWithin) {
