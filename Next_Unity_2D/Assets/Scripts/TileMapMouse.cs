@@ -14,6 +14,7 @@ public class TileMapMouse : MonoBehaviour {
     //Tiles
     public TileBase highlightGroundTile;
     public TileBase groundTile;
+    public TileBase tilledGround;
 
     //Other
     private WorldTile worldTiles;
@@ -40,6 +41,9 @@ public class TileMapMouse : MonoBehaviour {
         //Clicking on a tile will use it's grid position to retrieve it's data from the dictionary
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
             if (tilesDict.TryGetValue(gridPos, out worldTiles)) {
+                if (worldTiles.TileBase == groundTile) {
+                    tilemapGround.SetTile(gridPos, tilledGround); //Till ground
+                }
                 print(worldTiles.TileGridPos);
             }
         }
