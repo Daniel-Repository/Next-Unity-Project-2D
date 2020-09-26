@@ -17,6 +17,7 @@ public class TileMapMouse : MonoBehaviour {
     public TileBase tilledGround;
 
     //Other
+    public Camera mainCamera;
     private WorldTile worldTiles;
     public TileManager tileManager;
     Vector3Int prevGridPos;
@@ -28,6 +29,7 @@ public class TileMapMouse : MonoBehaviour {
         tilemapGround = GameObject.Find("TileMap_GroundPieces").GetComponent<Tilemap>();
         tilemapHighlight = GameObject.Find("TileMap_GroundPiecesHighlight").GetComponent<Tilemap>();
         tilesDict = tileManager.getTilesDictionary();
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -96,5 +98,5 @@ public class TileMapMouse : MonoBehaviour {
 
         tilesDict = tileManager.getTilesDictionary();
     }
-
+    
 }
