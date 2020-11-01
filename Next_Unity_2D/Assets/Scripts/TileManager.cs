@@ -28,6 +28,8 @@ public class TileManager : MonoBehaviour {
             Vector3Int gridPos = new Vector3Int(pos.x, pos.y, pos.z);
 
             if (!Tilemap.HasTile(gridPos)) continue;
+            if (tiles.ContainsKey(gridPos)) break;
+
             var tile = new WorldTile {
                 TileGridPos = gridPos,
                 TileBase = Tilemap.GetTile(gridPos),

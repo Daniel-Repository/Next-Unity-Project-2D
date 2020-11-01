@@ -14,5 +14,7 @@ public class WorldTile {
     //Which tilemap this tile is member of
     public Tilemap TilemapMember { get; set; }
 
+    //Which state is the tile in?
+    public Tilemap TileState { get; set; }
 
 }

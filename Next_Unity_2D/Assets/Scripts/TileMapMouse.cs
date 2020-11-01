@@ -40,18 +40,26 @@ public class TileMapMouse : MonoBehaviour {
 
         highlightPlaced = tilemapHighlight.HasTile(gridPos);
 
-        //Clicking on a tile will use it's grid position to retrieve it's data from the dictionary
+        //TILL GROUND
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
             if (tilesDict.TryGetValue(gridPos, out worldTiles)) {
                 if (worldTiles.TileBase == groundTile) {
                     tilemapGround.SetTile(gridPos, tilledGround); //Till ground
+                    tilesDict = tileManager.getTilesDictionary();
                 }
-                print(worldTiles.TileGridPos);
             }
         }
 
+        //TEMP: Adds additional tiles
         if (Input.GetKeyDown("space")) {
             addGroundTiles();
+        }
+
+        //TEMP prints all tile info
+        if (Input.GetKeyDown("p")) {
+            foreach (KeyValuePair<Vector3Int, WorldTile> entry in tilesDict) {
+                print("Position: " + entry.Key + "and tilebase: " + entry.Value.TileBase);
+            }
         }
 
         //Removing HL from previously hovered tile
