@@ -19,6 +19,6 @@ public class RainGen : MonoBehaviour {
 
         rainSystem = this.GetComponent<ParticleSystem>();
         var rsShape = rainSystem.shape;
-        rsShape.scale = new Vector3(camWidth + 100, 0, 0);
+        rsShape.scale = new Vector3(camWidth + 200, 0, 0);
     }
 }

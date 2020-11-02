@@ -44,8 +44,8 @@ public class TileMapMouse : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
             if (tilesDict.TryGetValue(gridPos, out worldTiles)) {
                 if (worldTiles.TileBase == groundTile) {
-                    tilemapGround.SetTile(gridPos, tilledGround); //Till ground
-                    tilesDict = tileManager.getTilesDictionary();
+                    tilemapGround.SetTile(gridPos, tilledGround);
+                    tileManager.updateWorldTiles(gridPos, "TileBase", tilledGround);
                 }
             }
         }
@@ -55,10 +55,11 @@ public class TileMapMouse : MonoBehaviour {
             addGroundTiles();
         }
 
-        //TEMP prints all tile info
+        //TEMP: Prints tile info
         if (Input.GetKeyDown("p")) {
             foreach (KeyValuePair<Vector3Int, WorldTile> entry in tilesDict) {
-                print("Position: " + entry.Key + "and tilebase: " + entry.Value.TileBase);
+                print("Position: " + entry.Key + " and tilebase: " + entry.Value.TileBase + " and state: " + 
+                    entry.Value.TileState);
             }
         }
 

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMove : MonoBehaviour
-{
+public class CameraMove : MonoBehaviour {
     
     public float moveSpeed = 3f;
     public float scrollSpeed = 2f;
