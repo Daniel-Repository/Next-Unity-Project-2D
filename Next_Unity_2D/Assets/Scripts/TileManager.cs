@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class TileManager : MonoBehaviour {
 
     public static TileManager instance;
-    public Tilemap Tilemap;
+    private Tilemap tilemapGround;
     public Dictionary<Vector3Int, WorldTile> tiles;
     private WorldTile worldTiles;
 
@@ -16,7 +16,11 @@ public class TileManager : MonoBehaviour {
     public TileBase groundTile;
     public TileBase tilledGround;
 
+    //Counters
+    public int tilledDeprecation = 120;
+
     private void Start() {
+        tilemapGround = GameObject.Find("TileMap_GroundPieces").GetComponent<Tilemap>();
         tiles = new Dictionary<Vector3Int, WorldTile>();
         populateWorldTiles();
     }
@@ -37,17 +41,17 @@ public class TileManager : MonoBehaviour {
     //Instantiates our dictionary --> Adds every new tile from grid to it as a WorldTile object 
     private void populateWorldTiles() {
 
-        foreach (Vector3Int pos in Tilemap.cellBounds.allPositionsWithin) {
+        foreach (Vector3Int pos in tilemapGround.cellBounds.allPositionsWithin) {
 
             Vector3Int gridPos = new Vector3Int(pos.x, pos.y, pos.z);
 
-            if (!Tilemap.HasTile(gridPos)) continue;
+            if (!tilemapGround.HasTile(gridPos)) continue;
             if (tiles.ContainsKey(gridPos)) break;
 
             var tile = new WorldTile {
                 TileGridPos = gridPos,
-                TileBase = Tilemap.GetTile(gridPos),
-                TilemapMember = Tilemap,
+                TileBase = tilemapGround.GetTile(gridPos),
+                TilemapMember = tilemapGround,
                 TileState = 0
             };
 
@@ -67,6 +71,11 @@ public class TileManager : MonoBehaviour {
             case "TileState":
                 if(tiles.TryGetValue(gridPos, out worldTiles)) {
                     tiles[gridPos].TileState += 1;
+                    if(tiles[gridPos].TileBase == tilledGround && tiles[gridPos].TileState == tilledDeprecation) {
+                        tiles[gridPos].TileBase = groundTile;
+                        tilemapGround.SetTile(gridPos, groundTile);
+                        tiles[gridPos].TileState = 0;
+                    }
                 }
                 break;
 

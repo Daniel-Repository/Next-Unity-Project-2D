@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public float targetTime = 30.0f;
+    private float targetTime = 1.0f;
 
     public TileManager tileManager;
 
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
 
     void timerEnded() {
         tileManager.timerUpdate();
-        print("Timer tick");
-        targetTime = 30.0f;
+        //print("Timer tick");
+        targetTime = 1.0f;
     }
 }
