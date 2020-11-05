@@ -333,7 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dff9d8da983e754eb85ad1e3aa89794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTime: 10
   tileManager: {fileID: 515818392}
 --- !u!4 &499541183
 Transform:
@@ -378,11 +377,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7da13c15de0264d9ddb049b21aadff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightGroundTile: {fileID: 11400000, guid: e979049c5e2ba3b47a7db15ecfe52811,
-    type: 2}
-  groundTile: {fileID: 11400000, guid: e417ac663f3ae4c42a9d6c4eee214bfe, type: 2}
+  weedsGround: {fileID: 11400000, guid: 2fe17417039276545943e460ba61c756, type: 2}
+  grassGround: {fileID: 11400000, guid: 46b3d3dbef537fa4aa30d2f2f29c4fad, type: 2}
+  basicGround: {fileID: 11400000, guid: e417ac663f3ae4c42a9d6c4eee214bfe, type: 2}
   tilledGround: {fileID: 11400000, guid: 40bfbaf7a82f7a145b6f2e736672ffed, type: 2}
   tilledDeprecation: 10
+  grassGrowth: 10
+  weedsGrowth: 10
 --- !u!4 &515818393
 Transform:
   m_ObjectHideFlags: 0

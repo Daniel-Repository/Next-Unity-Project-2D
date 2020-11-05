@@ -11,13 +11,16 @@ public class TileManager : MonoBehaviour {
     public Dictionary<Vector3Int, WorldTile> tiles;
     private WorldTile worldTiles;
 
-    //Tiles
-    public TileBase highlightGroundTile;
-    public TileBase groundTile;
+    //Tiles]
+    public TileBase weedsGround;
+    public TileBase grassGround;
+    public TileBase basicGround;
     public TileBase tilledGround;
 
     //Counters
     public int tilledDeprecation = 120;
+    public int grassGrowth = 120;
+    public int weedsGrowth = 120;
 
     private void Start() {
         tilemapGround = GameObject.Find("TileMap_GroundPieces").GetComponent<Tilemap>();
@@ -32,9 +35,7 @@ public class TileManager : MonoBehaviour {
 
     public void timerUpdate() {
         foreach (KeyValuePair<Vector3Int, WorldTile> entry in tiles) {
-            if(entry.Value.TileBase == tilledGround) {
-                updateWorldTiles(entry.Key, "TileState", entry.Value.TileBase);
-            }
+            updateWorldTiles(entry.Key, "TileState", entry.Value.TileBase);
         }
     }
 
@@ -65,15 +66,32 @@ public class TileManager : MonoBehaviour {
             case "TileBase":
                 if (tiles.TryGetValue(gridPos, out worldTiles)) {
                     tiles[gridPos].TileBase = tb;
+                    tiles[gridPos].TileState = 0;
                 }
                 break;
 
             case "TileState":
                 if(tiles.TryGetValue(gridPos, out worldTiles)) {
                     tiles[gridPos].TileState += 1;
+                    
+                    //Tilled --> Basic Ground
                     if(tiles[gridPos].TileBase == tilledGround && tiles[gridPos].TileState == tilledDeprecation) {
-                        tiles[gridPos].TileBase = groundTile;
-                        tilemapGround.SetTile(gridPos, groundTile);
+                        tiles[gridPos].TileBase = basicGround;
+                        tilemapGround.SetTile(gridPos, basicGround);
+                        tiles[gridPos].TileState = 0;
+                    }
+
+                    //Basic Goround --> Grass Ground
+                    if (tiles[gridPos].TileBase == basicGround && tiles[gridPos].TileState == grassGrowth) {
+                        tiles[gridPos].TileBase = grassGround;
+                        tilemapGround.SetTile(gridPos, grassGround);
+                        tiles[gridPos].TileState = 0;
+                    }
+
+                    //Grass Ground --> Weeds Ground
+                    if (tiles[gridPos].TileBase == grassGround && tiles[gridPos].TileState == weedsGrowth) {
+                        tiles[gridPos].TileBase = weedsGround;
+                        tilemapGround.SetTile(gridPos, weedsGround);
                         tiles[gridPos].TileState = 0;
                     }
                 }
