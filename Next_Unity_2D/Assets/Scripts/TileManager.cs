@@ -39,7 +39,7 @@ public class TileManager : MonoBehaviour {
         }
     }
 
-    //Instantiates our dictionary --> Adds every new tile from grid to it as a WorldTile object 
+    //Adds our initial tiles to our dictionary
     private void populateWorldTiles() {
 
         foreach (Vector3Int pos in tilemapGround.cellBounds.allPositionsWithin) {
@@ -60,6 +60,23 @@ public class TileManager : MonoBehaviour {
         }
     } 
 
+    //Add new tile to dictionary
+    public void addWorldTiles(Vector3Int gridPos) {
+        if (tiles.ContainsKey(gridPos)) {
+            
+        } else {
+            var tile = new WorldTile {
+                TileGridPos = gridPos,
+                TileBase = tilemapGround.GetTile(gridPos),
+                TilemapMember = tilemapGround,
+                TileState = 0
+            };
+
+            tiles.Add(tile.TileGridPos, tile);
+        }
+    }
+    
+    //Update our tiles
     public void updateWorldTiles(Vector3Int gridPos, string state, TileBase tb) {
         switch (state) {
 

@@ -75,13 +75,13 @@ public class TileMapMouse : MonoBehaviour {
         } 
     }
 
-    //Add next layer of groundtiles to our tilemap
+    //Add next layer of groundtiles to our tilemap + dictionary
     private void addGroundTiles() {
         
         var maxY = 0;
         var maxX = 0;
        
-        //Calc max y and x values to add next group of tiles to
+        //Calc max y and x values to add next group of tiles to tilemap.
         foreach (KeyValuePair<Vector3Int, WorldTile> entry in tilesDict) {
             if (entry.Key.x <= maxX) {
                 maxX -= 1;
@@ -91,21 +91,23 @@ public class TileMapMouse : MonoBehaviour {
             }
         }
 
-        //Increment through y values using maxX
+        //Increment through y values using maxX. Adds tile to tilemap and our dictionary.
         var y = 0;
         while (y >= maxY) {
             tilemapGround.SetTile(new Vector3Int(maxX, y, 0), groundTile);
+            tileManager.addWorldTiles(new Vector3Int(maxX, y, 0));
             y -= 1;
         }
 
-        //Increment through x values using maxY
+        //Increment through x values using maxY. Adds tile to tilemap and our dictionary.
         var x = 0;
         while (x >= maxX) {
             tilemapGround.SetTile(new Vector3Int(x, maxY, 0), groundTile);
+            tileManager.addWorldTiles(new Vector3Int(x, maxY, 0));
             x -= 1;
         }
-
-        tilesDict = tileManager.getTilesDictionary();
+        
+        
     }
     
 }
