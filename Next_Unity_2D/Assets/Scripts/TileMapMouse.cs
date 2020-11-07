@@ -107,7 +107,6 @@ public class TileMapMouse : MonoBehaviour {
             x -= 1;
         }
         
-        
     }
-    
+
 }
