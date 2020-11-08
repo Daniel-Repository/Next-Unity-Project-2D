@@ -9,7 +9,7 @@ public class RainGen : MonoBehaviour {
 
     // Start is called before the first frame update
     void Update() {
-        setPSWidth();
+        //setPSWidth();
     }
 
     private void setPSWidth() {
