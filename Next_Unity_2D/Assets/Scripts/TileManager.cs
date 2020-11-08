@@ -11,11 +11,12 @@ public class TileManager : MonoBehaviour {
     public Dictionary<Vector3Int, WorldTile> tiles;
     private WorldTile worldTiles;
 
-    //Tiles]
+    //Tiles
     public TileBase weedsGround;
     public TileBase grassGround;
     public TileBase basicGround;
     public TileBase tilledGround;
+    public TileBase groundSeed1;
 
     //Counters
     public int tilledDeprecation = 120;

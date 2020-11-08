@@ -15,6 +15,7 @@ public class TileMapMouse : MonoBehaviour {
     public TileBase highlightGroundTile;
     public TileBase groundTile;
     public TileBase tilledGround;
+    public TileBase groundSeed1;
 
     //Other
     public Camera mainCamera;

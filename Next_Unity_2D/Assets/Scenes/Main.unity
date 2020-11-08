@@ -215,7 +215,7 @@ Tilemap:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
   - first: {x: 0, y: -1, z: 0}
@@ -224,7 +224,7 @@ Tilemap:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
   - first: {x: -1, y: 0, z: 0}
@@ -233,7 +233,7 @@ Tilemap:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
   - first: {x: 0, y: 0, z: 0}
@@ -242,7 +242,7 @@ Tilemap:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
@@ -276,10 +276,10 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 0
-    m_Data: {r: -2.5824854e+10, g: -2.5824854e+10, b: -2.5824854e+10, a: -2.5824854e+10}
   - m_RefCount: 4
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 0, g: 0, b: 0, a: 0}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -381,6 +381,7 @@ MonoBehaviour:
   grassGround: {fileID: 11400000, guid: 46b3d3dbef537fa4aa30d2f2f29c4fad, type: 2}
   basicGround: {fileID: 11400000, guid: e417ac663f3ae4c42a9d6c4eee214bfe, type: 2}
   tilledGround: {fileID: 11400000, guid: 40bfbaf7a82f7a145b6f2e736672ffed, type: 2}
+  groundSeed1: {fileID: 11400000, guid: ab1661d3171f1bc4fad6961eed6842e3, type: 2}
   tilledDeprecation: 10
   grassGrowth: 10
   weedsGrowth: 10
@@ -549,6 +550,7 @@ MonoBehaviour:
     type: 2}
   groundTile: {fileID: 11400000, guid: e417ac663f3ae4c42a9d6c4eee214bfe, type: 2}
   tilledGround: {fileID: 11400000, guid: 40bfbaf7a82f7a145b6f2e736672ffed, type: 2}
+  groundSeed1: {fileID: 11400000, guid: ab1661d3171f1bc4fad6961eed6842e3, type: 2}
   mainCamera: {fileID: 0}
   tileManager: {fileID: 515818392}
 --- !u!483693784 &839989613
