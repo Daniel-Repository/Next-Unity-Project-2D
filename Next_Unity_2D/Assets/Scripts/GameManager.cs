@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
     private float targetTime = 1.0f;
-
+    private string toolSelection;
+    private Text selectionText;
     public TileManager tileManager;
 
     private void Start() {
-        
+        selectionText = GameObject.Find("SelectionText").GetComponent<Text>();
+        toolSelection = "toolTilling";
+        selectionText.text = "Selection: toolTilling";
     }
 
     // Start is called before the first frame update
@@ -19,11 +23,33 @@ public class GameManager : MonoBehaviour {
         if(targetTime <= 0.0f) {
             timerEnded();
         }
+
+        checkSelection();
     }
 
     void timerEnded() {
         tileManager.timerUpdate();
         //print("Timer tick");
         targetTime = 1.0f;
+    }
+
+    void checkSelection() {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            toolSelection = "toolTilling";
+            selectionText.text = "Selection: toolTilling";
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            toolSelection = "toolSeed1";
+            selectionText.text = "Selection: toolSeed1";
+        }
+    }
+
+    public bool canTill() {
+        if(toolSelection == "toolTilling") {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

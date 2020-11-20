@@ -21,6 +21,7 @@ public class TileMapMouse : MonoBehaviour {
     public Camera mainCamera;
     private WorldTile worldTiles;
     public TileManager tileManager;
+    public GameManager gameManager;
     Vector3Int prevGridPos;
     bool highlightPlaced;
     private Dictionary<Vector3Int, WorldTile> tilesDict;
@@ -44,9 +45,11 @@ public class TileMapMouse : MonoBehaviour {
         //TILL GROUND
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
             if (tilesDict.TryGetValue(gridPos, out worldTiles)) {
-                if (worldTiles.TileBase != tilledGround) {
-                    tilemapGround.SetTile(gridPos, tilledGround);
-                    tileManager.updateWorldTiles(gridPos, "TileBase", tilledGround);
+                if (gameManager.canTill()) {
+                    if (worldTiles.TileBase != tilledGround) {
+                        tilemapGround.SetTile(gridPos, tilledGround);
+                        tileManager.updateWorldTiles(gridPos, "TileBase", tilledGround);
+                    }
                 }
             }
         }
