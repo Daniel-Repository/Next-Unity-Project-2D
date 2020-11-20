@@ -51,6 +51,12 @@ public class TileMapMouse : MonoBehaviour {
                         tileManager.updateWorldTiles(gridPos, "TileBase", tilledGround);
                     }
                 }
+                else if (gameManager.canSeed()) { 
+                    if (worldTiles.TileBase == tilledGround) {
+                        tilemapGround.SetTile(gridPos, groundSeed1);
+                        tileManager.updateWorldTiles(gridPos, "TileBase", groundSeed1);
+                    }
+                }
             }
         }
 

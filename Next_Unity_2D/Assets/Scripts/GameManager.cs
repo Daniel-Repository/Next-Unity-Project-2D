@@ -52,4 +52,13 @@ public class GameManager : MonoBehaviour {
             return false;
         }
     }
+
+    public bool canSeed() {
+        if (toolSelection == "toolSeed1") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
