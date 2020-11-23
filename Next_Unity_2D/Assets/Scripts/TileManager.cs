@@ -17,11 +17,15 @@ public class TileManager : MonoBehaviour {
     public TileBase basicGround;
     public TileBase tilledGround;
     public TileBase groundSeed1;
+    public TileBase groundSprout1;
+    public TileBase groundFlower1;
 
     //Counters
     public int tilledDeprecation = 120;
     public int grassGrowth = 120;
     public int weedsGrowth = 120;
+    public int sproutGrowth = 120;
+    public int flowerGrowth = 120;
 
     private void Start() {
         tilemapGround = GameObject.Find("TileMap_GroundPieces").GetComponent<Tilemap>();
@@ -91,9 +95,23 @@ public class TileManager : MonoBehaviour {
             case "TileState":
                 if(tiles.TryGetValue(gridPos, out worldTiles)) {
                     tiles[gridPos].TileState += 1;
-                    
+
+                    //Sprout --> Flower
+                    if (tiles[gridPos].TileBase == groundSprout1 && tiles[gridPos].TileState == flowerGrowth) {
+                        tiles[gridPos].TileBase = groundFlower1;
+                        tilemapGround.SetTile(gridPos, groundFlower1);
+                        tiles[gridPos].TileState = 0;
+                    }
+
+                    //Seed --> Sprout
+                    if (tiles[gridPos].TileBase == groundSeed1 && tiles[gridPos].TileState == sproutGrowth) {
+                        tiles[gridPos].TileBase = groundSprout1;
+                        tilemapGround.SetTile(gridPos, groundSprout1);
+                        tiles[gridPos].TileState = 0;
+                    }
+
                     //Tilled --> Basic Ground
-                    if(tiles[gridPos].TileBase == tilledGround && tiles[gridPos].TileState == tilledDeprecation) {
+                    if (tiles[gridPos].TileBase == tilledGround && tiles[gridPos].TileState == tilledDeprecation) {
                         tiles[gridPos].TileBase = basicGround;
                         tilemapGround.SetTile(gridPos, basicGround);
                         tiles[gridPos].TileState = 0;
