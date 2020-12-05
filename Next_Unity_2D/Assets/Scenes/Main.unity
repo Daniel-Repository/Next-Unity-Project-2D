@@ -381,14 +381,15 @@ MonoBehaviour:
   grassGround: {fileID: 11400000, guid: 46b3d3dbef537fa4aa30d2f2f29c4fad, type: 2}
   basicGround: {fileID: 11400000, guid: e417ac663f3ae4c42a9d6c4eee214bfe, type: 2}
   tilledGround: {fileID: 11400000, guid: 40bfbaf7a82f7a145b6f2e736672ffed, type: 2}
-  groundSeed1: {fileID: 11400000, guid: ab1661d3171f1bc4fad6961eed6842e3, type: 2}
-  groundSprout1: {fileID: 11400000, guid: ec05b39b89bb04a4eb8f464c0269498c, type: 2}
-  groundFlower1: {fileID: 11400000, guid: 67b2bc5ad71474048a7c481e6012ffa0, type: 2}
-  tilledDeprecation: 10
-  grassGrowth: 10
-  weedsGrowth: 10
-  sproutGrowth: 120
-  flowerGrowth: 120
+  pinkSeed: {fileID: 11400000, guid: ab1661d3171f1bc4fad6961eed6842e3, type: 2}
+  pinkSprout: {fileID: 11400000, guid: ec05b39b89bb04a4eb8f464c0269498c, type: 2}
+  pinkFlower: {fileID: 11400000, guid: 67b2bc5ad71474048a7c481e6012ffa0, type: 2}
+  blueSeed: {fileID: 0}
+  blueSprout: {fileID: 0}
+  blueFlower: {fileID: 0}
+  yellowSeed: {fileID: 0}
+  yellowSprout: {fileID: 0}
+  yellowFlower: {fileID: 0}
 --- !u!4 &515818393
 Transform:
   m_ObjectHideFlags: 0
@@ -475,7 +476,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.68
+  orthographic size: 2.1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -799,7 +800,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 2
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.115
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

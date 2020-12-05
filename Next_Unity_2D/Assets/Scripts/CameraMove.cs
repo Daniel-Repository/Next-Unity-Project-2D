@@ -16,7 +16,7 @@ public class CameraMove : MonoBehaviour {
     float minZoom = 1.68f;
     float maxZoom = 3.5f;
 
-    float zoom = 1.68f;
+    float zoom = 2f;
 
     void Update() {
 

@@ -16,21 +16,41 @@ public class TileManager : MonoBehaviour {
     public TileBase grassGround;
     public TileBase basicGround;
     public TileBase tilledGround;
-    public TileBase groundSeed1;
-    public TileBase groundSprout1;
-    public TileBase groundFlower1;
+    public TileBase pinkSeed;
+    public TileBase pinkSprout;
+    public TileBase pinkFlower;
+    public TileBase blueSeed;
+    public TileBase blueSprout;
+    public TileBase blueFlower;
+    public TileBase yellowSeed;
+    public TileBase yellowSprout;
+    public TileBase yellowFlower;
+
+    private List<TileBase> listSeeds;
+    private List<TileBase> listSprouts;
+    private List<TileBase> listFlowers;
+    
 
     //Counters
-    public int tilledDeprecation = 120;
-    public int grassGrowth = 120;
-    public int weedsGrowth = 120;
-    public int sproutGrowth = 120;
-    public int flowerGrowth = 120;
+    private int tilledDeprecation = 120;
+    private int grassGrowth = 120;
+    private int weedsGrowth = 120;
+    private int sproutGrowth = 120;
+    private int flowerGrowth = 120;
 
     private void Start() {
         tilemapGround = GameObject.Find("TileMap_GroundPieces").GetComponent<Tilemap>();
         tiles = new Dictionary<Vector3Int, WorldTile>();
         populateWorldTiles();
+
+        listSeeds = new List<TileBase>();
+        listSeeds.AddRange(new List<TileBase> { pinkSeed, blueSeed, yellowSeed });
+
+        listSprouts = new List<TileBase>();
+        listSprouts.AddRange(new List<TileBase> { pinkSprout, blueSprout, yellowSprout });
+
+        listFlowers = new List<TileBase>();
+        listFlowers.AddRange(new List<TileBase> { pinkFlower, blueFlower, yellowFlower });
     }
 
     public Dictionary<Vector3Int, WorldTile> getTilesDictionary() {
@@ -38,6 +58,7 @@ public class TileManager : MonoBehaviour {
         return tiles;
     }
 
+    //Update the state of each tile once the timer ends
     public void timerUpdate() {
         foreach (KeyValuePair<Vector3Int, WorldTile> entry in tiles) {
             updateWorldTiles(entry.Key, "TileState", entry.Value.TileBase);
@@ -68,8 +89,9 @@ public class TileManager : MonoBehaviour {
     //Add new tile to dictionary
     public void addWorldTiles(Vector3Int gridPos) {
         if (tiles.ContainsKey(gridPos)) {
-            
-        } else {
+            //Do nothing, as there's already a tile here (should throw erorr but YOLO)
+        } 
+        else {
             var tile = new WorldTile {
                 TileGridPos = gridPos,
                 TileBase = tilemapGround.GetTile(gridPos),
@@ -97,16 +119,18 @@ public class TileManager : MonoBehaviour {
                     tiles[gridPos].TileState += 1;
 
                     //Sprout --> Flower
-                    if (tiles[gridPos].TileBase == groundSprout1 && tiles[gridPos].TileState == flowerGrowth) {
-                        tiles[gridPos].TileBase = groundFlower1;
-                        tilemapGround.SetTile(gridPos, groundFlower1);
+                    if (listSprouts.Contains(tiles[gridPos].TileBase) && tiles[gridPos].TileState == flowerGrowth) {
+                        TileBase flower = getNextGrowth(tiles[gridPos].TileBase);
+                        tiles[gridPos].TileBase = flower;
+                        tilemapGround.SetTile(gridPos, flower);
                         tiles[gridPos].TileState = 0;
                     }
 
                     //Seed --> Sprout
-                    if (tiles[gridPos].TileBase == groundSeed1 && tiles[gridPos].TileState == sproutGrowth) {
-                        tiles[gridPos].TileBase = groundSprout1;
-                        tilemapGround.SetTile(gridPos, groundSprout1);
+                    if (listSeeds.Contains(tiles[gridPos].TileBase) && tiles[gridPos].TileState == sproutGrowth) {
+                        TileBase sprout = getNextGrowth(tiles[gridPos].TileBase);
+                        tiles[gridPos].TileBase = sprout;
+                        tilemapGround.SetTile(gridPos, sprout);
                         tiles[gridPos].TileState = 0;
                     }
 
@@ -135,6 +159,31 @@ public class TileManager : MonoBehaviour {
 
             default:
                 break;
+        }
+    }
+
+    //Retrun the next growth stage depending on flower type
+    private TileBase getNextGrowth(TileBase tb) {
+        if(tb == pinkSeed) {
+            return pinkSprout;
+        }
+        else if(tb == pinkSprout) {
+            return pinkFlower;
+        }
+        else if (tb == blueSeed) {
+            return blueSprout;
+        }
+        else if (tb == blueSprout) {
+            return blueFlower;
+        }
+        else if (tb == yellowSeed) {
+            return yellowSprout;
+        }
+        else if (tb == yellowSprout) {
+            return yellowFlower;
+        }
+        else {
+            return tb;
         }
     }
 

@@ -42,9 +42,10 @@ public class TileMapMouse : MonoBehaviour {
 
         highlightPlaced = tilemapHighlight.HasTile(gridPos);
 
-        //TILL GROUND
+        //TBC
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
             if (tilesDict.TryGetValue(gridPos, out worldTiles)) {
+                //TILL GROUND
                 if (gameManager.canTill()) {
                     if (worldTiles.TileBase != tilledGround) {
                         tilemapGround.SetTile(gridPos, tilledGround);
