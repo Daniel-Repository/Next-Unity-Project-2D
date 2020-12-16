@@ -334,6 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileManager: {fileID: 515818392}
+  pinkSeed: {fileID: 11400000, guid: ab1661d3171f1bc4fad6961eed6842e3, type: 2}
+  blueSeed: {fileID: 11400000, guid: df0e7168a695a6e4481d8f90fe873749, type: 2}
+  yellowSeed: {fileID: 11400000, guid: b38e336e1ce26b240b7cd34d8d81a455, type: 2}
 --- !u!4 &499541183
 Transform:
   m_ObjectHideFlags: 0

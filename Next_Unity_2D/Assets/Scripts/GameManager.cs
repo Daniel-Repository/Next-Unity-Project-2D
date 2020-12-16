@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour {
 
@@ -9,6 +10,11 @@ public class GameManager : MonoBehaviour {
     private string toolSelection;
     private Text selectionText;
     public TileManager tileManager;
+
+    public TileBase pinkSeed;
+    public TileBase blueSeed;
+    public TileBase yellowSeed;
+    TileBase selectedSeed;
 
     private void Start() {
         selectionText = GameObject.Find("SelectionText").GetComponent<Text>();
@@ -41,7 +47,18 @@ public class GameManager : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2)) {
             toolSelection = "toolSeed1";
-            selectionText.text = "Selection: toolSeed1";
+            selectionText.text = "Selection: Pink Seed";
+            selectedSeed = pinkSeed;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            toolSelection = "toolSeed1";
+            selectionText.text = "Selection: Blue Seed";
+            selectedSeed = blueSeed;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            toolSelection = "toolSeed1";
+            selectionText.text = "Selection: Yellow Seed";
+            selectedSeed = yellowSeed;
         }
     }
 
@@ -61,5 +78,9 @@ public class GameManager : MonoBehaviour {
         else {
             return false;
         }
+    }
+
+    public TileBase getSelectedSeed() {
+        return selectedSeed;
     }
 }

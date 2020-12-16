@@ -26,17 +26,17 @@ public class TileManager : MonoBehaviour {
     public TileBase yellowSprout;
     public TileBase yellowFlower;
 
+    //Lists
     private List<TileBase> listSeeds;
     private List<TileBase> listSprouts;
     private List<TileBase> listFlowers;
-    
 
     //Counters
-    private int tilledDeprecation = 120;
-    private int grassGrowth = 120;
-    private int weedsGrowth = 120;
-    private int sproutGrowth = 120;
-    private int flowerGrowth = 120;
+    private int tilledDeprecationTime = 10;
+    private int grassGrowthTime = 10;
+    private int weedsGrowthTime = 10;
+    private int sproutGrowthTime = 10;
+    private int flowerGrowthTime = 10;
 
     private void Start() {
         tilemapGround = GameObject.Find("TileMap_GroundPieces").GetComponent<Tilemap>();
@@ -119,7 +119,7 @@ public class TileManager : MonoBehaviour {
                     tiles[gridPos].TileState += 1;
 
                     //Sprout --> Flower
-                    if (listSprouts.Contains(tiles[gridPos].TileBase) && tiles[gridPos].TileState == flowerGrowth) {
+                    if (listSprouts.Contains(tiles[gridPos].TileBase) && tiles[gridPos].TileState == flowerGrowthTime) {
                         TileBase flower = getNextGrowth(tiles[gridPos].TileBase);
                         tiles[gridPos].TileBase = flower;
                         tilemapGround.SetTile(gridPos, flower);
@@ -127,7 +127,7 @@ public class TileManager : MonoBehaviour {
                     }
 
                     //Seed --> Sprout
-                    if (listSeeds.Contains(tiles[gridPos].TileBase) && tiles[gridPos].TileState == sproutGrowth) {
+                    if (listSeeds.Contains(tiles[gridPos].TileBase) && tiles[gridPos].TileState == sproutGrowthTime) {
                         TileBase sprout = getNextGrowth(tiles[gridPos].TileBase);
                         tiles[gridPos].TileBase = sprout;
                         tilemapGround.SetTile(gridPos, sprout);
@@ -135,21 +135,21 @@ public class TileManager : MonoBehaviour {
                     }
 
                     //Tilled --> Basic Ground
-                    if (tiles[gridPos].TileBase == tilledGround && tiles[gridPos].TileState == tilledDeprecation) {
+                    if (tiles[gridPos].TileBase == tilledGround && tiles[gridPos].TileState == tilledDeprecationTime) {
                         tiles[gridPos].TileBase = basicGround;
                         tilemapGround.SetTile(gridPos, basicGround);
                         tiles[gridPos].TileState = 0;
                     }
 
                     //Basic Goround --> Grass Ground
-                    if (tiles[gridPos].TileBase == basicGround && tiles[gridPos].TileState == grassGrowth) {
+                    if (tiles[gridPos].TileBase == basicGround && tiles[gridPos].TileState == grassGrowthTime) {
                         tiles[gridPos].TileBase = grassGround;
                         tilemapGround.SetTile(gridPos, grassGround);
                         tiles[gridPos].TileState = 0;
                     }
 
                     //Grass Ground --> Weeds Ground
-                    if (tiles[gridPos].TileBase == grassGround && tiles[gridPos].TileState == weedsGrowth) {
+                    if (tiles[gridPos].TileBase == grassGround && tiles[gridPos].TileState == weedsGrowthTime) {
                         tiles[gridPos].TileBase = weedsGround;
                         tilemapGround.SetTile(gridPos, weedsGround);
                         tiles[gridPos].TileState = 0;

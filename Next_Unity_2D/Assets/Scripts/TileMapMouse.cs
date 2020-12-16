@@ -55,8 +55,8 @@ public class TileMapMouse : MonoBehaviour {
                 //PLANT SEED
                 else if (gameManager.canSeed()) { 
                     if (worldTiles.TileBase == tilledGround) {
-                        tilemapGround.SetTile(gridPos, groundSeed1);
-                        tileManager.updateWorldTiles(gridPos, "TileBase", groundSeed1);
+                        tilemapGround.SetTile(gridPos, gameManager.getSelectedSeed());
+                        tileManager.updateWorldTiles(gridPos, "TileBase", gameManager.getSelectedSeed());
                     }
                 }
             }
