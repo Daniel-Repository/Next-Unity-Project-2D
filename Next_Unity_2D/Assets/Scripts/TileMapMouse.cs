@@ -42,7 +42,7 @@ public class TileMapMouse : MonoBehaviour {
 
         highlightPlaced = tilemapHighlight.HasTile(gridPos);
 
-        //TBC
+        //When the learner clicks an available tile
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
             if (tilesDict.TryGetValue(gridPos, out worldTiles)) {
                 //TILL GROUND
@@ -52,6 +52,7 @@ public class TileMapMouse : MonoBehaviour {
                         tileManager.updateWorldTiles(gridPos, "TileBase", tilledGround);
                     }
                 }
+                //PLANT SEED
                 else if (gameManager.canSeed()) { 
                     if (worldTiles.TileBase == tilledGround) {
                         tilemapGround.SetTile(gridPos, groundSeed1);

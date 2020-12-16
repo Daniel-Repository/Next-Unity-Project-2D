@@ -384,12 +384,12 @@ MonoBehaviour:
   pinkSeed: {fileID: 11400000, guid: ab1661d3171f1bc4fad6961eed6842e3, type: 2}
   pinkSprout: {fileID: 11400000, guid: ec05b39b89bb04a4eb8f464c0269498c, type: 2}
   pinkFlower: {fileID: 11400000, guid: 67b2bc5ad71474048a7c481e6012ffa0, type: 2}
-  blueSeed: {fileID: 0}
-  blueSprout: {fileID: 0}
-  blueFlower: {fileID: 0}
-  yellowSeed: {fileID: 0}
-  yellowSprout: {fileID: 0}
-  yellowFlower: {fileID: 0}
+  blueSeed: {fileID: 11400000, guid: df0e7168a695a6e4481d8f90fe873749, type: 2}
+  blueSprout: {fileID: 11400000, guid: 5b8736e8ef6d75d4eab8731d6a2dfbb8, type: 2}
+  blueFlower: {fileID: 11400000, guid: e58165dc14ae44d43bedc45afb5516de, type: 2}
+  yellowSeed: {fileID: 11400000, guid: b38e336e1ce26b240b7cd34d8d81a455, type: 2}
+  yellowSprout: {fileID: 11400000, guid: 34c6f61b0168e6c40ab59ad84f0831b9, type: 2}
+  yellowFlower: {fileID: 11400000, guid: a34e19768ac79c54db344a4cdf4a57df, type: 2}
 --- !u!4 &515818393
 Transform:
   m_ObjectHideFlags: 0

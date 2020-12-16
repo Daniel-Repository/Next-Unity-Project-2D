@@ -27,12 +27,13 @@ public class GameManager : MonoBehaviour {
         checkSelection();
     }
 
+    //Runs ever second
     void timerEnded() {
         tileManager.timerUpdate();
-        //print("Timer tick");
         targetTime = 1.0f;
     }
 
+    //Changes what the user has selected
     void checkSelection() {
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             toolSelection = "toolTilling";
