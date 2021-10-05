@@ -393,6 +393,11 @@ MonoBehaviour:
   yellowSeed: {fileID: 11400000, guid: b38e336e1ce26b240b7cd34d8d81a455, type: 2}
   yellowSprout: {fileID: 11400000, guid: 34c6f61b0168e6c40ab59ad84f0831b9, type: 2}
   yellowFlower: {fileID: 11400000, guid: a34e19768ac79c54db344a4cdf4a57df, type: 2}
+  tilledDeprecationTime: 10
+  grassGrowthTime: 10
+  weedsGrowthTime: 10
+  sproutGrowthTime: 10
+  flowerGrowthTime: 10
 --- !u!4 &515818393
 Transform:
   m_ObjectHideFlags: 0

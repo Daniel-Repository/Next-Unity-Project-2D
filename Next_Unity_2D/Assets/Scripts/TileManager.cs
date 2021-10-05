@@ -32,11 +32,11 @@ public class TileManager : MonoBehaviour {
     private List<TileBase> listFlowers;
 
     //Counters
-    private int tilledDeprecationTime = 10;
-    private int grassGrowthTime = 10;
-    private int weedsGrowthTime = 10;
-    private int sproutGrowthTime = 10;
-    private int flowerGrowthTime = 10;
+    [SerializeField] private int tilledDeprecationTime = 10;
+    [SerializeField] private int grassGrowthTime = 10;
+    [SerializeField] private int weedsGrowthTime = 10;
+    [SerializeField] private int sproutGrowthTime = 10;
+    [SerializeField] private int flowerGrowthTime = 10;
 
     private void Start() {
         tilemapGround = GameObject.Find("TileMap_GroundPieces").GetComponent<Tilemap>();
