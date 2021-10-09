@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
     private float targetTime = 1.0f;
     private string toolSelection;
-    private Text selectionText;
+    private Image selectionBar;
     public TileManager tileManager;
 
     public TileBase pinkSeed;
@@ -16,10 +16,16 @@ public class GameManager : MonoBehaviour {
     public TileBase yellowSeed;
     TileBase selectedSeed;
 
+    //Toolbar Sprites
+    public Sprite selectionHoe;
+    public Sprite selectionPinkSeed;
+    public Sprite selectionYellowSeed;
+    public Sprite selectionBlueSeed;
+
     private void Start() {
-        selectionText = GameObject.Find("SelectionText").GetComponent<Text>();
+        selectionBar = GameObject.Find("SelectionBar").GetComponent<Image>();
         toolSelection = "toolTilling";
-        selectionText.text = "Selection: toolTilling";
+        selectionBar.sprite = selectionHoe;
     }
 
     // Start is called before the first frame update
@@ -43,22 +49,22 @@ public class GameManager : MonoBehaviour {
     void checkSelection() {
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             toolSelection = "toolTilling";
-            selectionText.text = "Selection: toolTilling";
+            selectionBar.sprite = selectionHoe;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2)) {
             toolSelection = "toolSeed1";
-            selectionText.text = "Selection: Pink Seed";
-            selectedSeed = pinkSeed;
+            selectionBar.sprite = selectionBlueSeed;
+            selectedSeed = blueSeed;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3)) {
             toolSelection = "toolSeed1";
-            selectionText.text = "Selection: Blue Seed";
-            selectedSeed = blueSeed;
+            selectionBar.sprite = selectionYellowSeed;
+            selectedSeed = yellowSeed;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4)) {
             toolSelection = "toolSeed1";
-            selectionText.text = "Selection: Yellow Seed";
-            selectedSeed = yellowSeed;
+            selectionBar.sprite = selectionPinkSeed;
+            selectedSeed = pinkSeed;
         }
     }
 

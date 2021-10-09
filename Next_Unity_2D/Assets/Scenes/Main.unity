@@ -337,6 +337,11 @@ MonoBehaviour:
   pinkSeed: {fileID: 11400000, guid: ab1661d3171f1bc4fad6961eed6842e3, type: 2}
   blueSeed: {fileID: 11400000, guid: df0e7168a695a6e4481d8f90fe873749, type: 2}
   yellowSeed: {fileID: 11400000, guid: b38e336e1ce26b240b7cd34d8d81a455, type: 2}
+  selectionHoe: {fileID: 21300000, guid: 18319a8e580adf041a35dd18480cf4f6, type: 3}
+  selectionPinkSeed: {fileID: 21300000, guid: b26eed248ed36734e9259dcdcfc28511, type: 3}
+  selectionYellowSeed: {fileID: 21300000, guid: 6225925a0ac5e494c9162bf689052af4,
+    type: 3}
+  selectionBlueSeed: {fileID: 21300000, guid: 4b36801993f5934469334410c8641c07, type: 3}
 --- !u!4 &499541183
 Transform:
   m_ObjectHideFlags: 0
@@ -393,11 +398,11 @@ MonoBehaviour:
   yellowSeed: {fileID: 11400000, guid: b38e336e1ce26b240b7cd34d8d81a455, type: 2}
   yellowSprout: {fileID: 11400000, guid: 34c6f61b0168e6c40ab59ad84f0831b9, type: 2}
   yellowFlower: {fileID: 11400000, guid: a34e19768ac79c54db344a4cdf4a57df, type: 2}
-  tilledDeprecationTime: 10
-  grassGrowthTime: 10
-  weedsGrowthTime: 10
-  sproutGrowthTime: 10
-  flowerGrowthTime: 10
+  tilledDeprecationTime: 30
+  grassGrowthTime: 60
+  weedsGrowthTime: 120
+  sproutGrowthTime: 60
+  flowerGrowthTime: 60
 --- !u!4 &515818393
 Transform:
   m_ObjectHideFlags: 0
@@ -514,84 +519,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &829434492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 829434493}
-  - component: {fileID: 829434495}
-  - component: {fileID: 829434494}
-  m_Layer: 5
-  m_Name: SelectionText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &829434493
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829434492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1051726419}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -673, y: 307}
-  m_SizeDelta: {x: 432.4898, y: 67.06816}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &829434494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829434492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 32
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 3
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: 'Selection:'
---- !u!222 &829434495
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829434492}
-  m_CullTransparentMesh: 0
 --- !u!1 &839989610
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +572,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   tileManager: {fileID: 515818392}
   gameManager: {fileID: 499541182}
+  maxTiles: 10
 --- !u!483693784 &839989613
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -755,6 +683,80 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1018640142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018640143}
+  - component: {fileID: 1018640145}
+  - component: {fileID: 1018640144}
+  m_Layer: 5
+  m_Name: SelectionBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1018640143
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018640142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1051726419}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -750, y: 350}
+  m_SizeDelta: {x: 203.125, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1018640144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018640142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 18319a8e580adf041a35dd18480cf4f6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1018640145
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018640142}
+  m_CullTransparentMesh: 0
 --- !u!1 &1051726415
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +847,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 829434493}
+  - {fileID: 1018640143}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

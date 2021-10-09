@@ -25,6 +25,7 @@ public class TileMapMouse : MonoBehaviour {
     Vector3Int prevGridPos;
     bool highlightPlaced;
     private Dictionary<Vector3Int, WorldTile> tilesDict;
+    public int maxTiles = 10;
 
     // Start is called before the first frame update
     private void Start() {
@@ -89,7 +90,7 @@ public class TileMapMouse : MonoBehaviour {
 
     //Add next layer of groundtiles to our tilemap + dictionary
     private void addGroundTiles() {
-        
+       
         var maxY = 0;
         var maxX = 0;
        
@@ -103,22 +104,27 @@ public class TileMapMouse : MonoBehaviour {
             }
         }
 
-        //Increment through y values using maxX. Adds tile to tilemap and our dictionary.
-        var y = 0;
-        while (y >= maxY) {
-            tilemapGround.SetTile(new Vector3Int(maxX, y, 0), groundTile);
-            tileManager.addWorldTiles(new Vector3Int(maxX, y, 0));
-            y -= 1;
+        if (maxY == -maxTiles || maxX == -maxTiles) {
+            print("Reached maxiumum tiles!");
         }
+        else {
 
-        //Increment through x values using maxY. Adds tile to tilemap and our dictionary.
-        var x = 0;
-        while (x >= maxX) {
-            tilemapGround.SetTile(new Vector3Int(x, maxY, 0), groundTile);
-            tileManager.addWorldTiles(new Vector3Int(x, maxY, 0));
-            x -= 1;
+            //Increment through y values using maxX. Adds tile to tilemap and our dictionary.
+            var y = 0;
+            while (y >= maxY) {
+                tilemapGround.SetTile(new Vector3Int(maxX, y, 0), groundTile);
+                tileManager.addWorldTiles(new Vector3Int(maxX, y, 0));
+                y -= 1;
+            }
+
+            //Increment through x values using maxY. Adds tile to tilemap and our dictionary.
+            var x = 0;
+            while (x >= maxX) {
+                tilemapGround.SetTile(new Vector3Int(x, maxY, 0), groundTile);
+                tileManager.addWorldTiles(new Vector3Int(x, maxY, 0));
+                x -= 1;
+            }
         }
-        
     }
 
 }
