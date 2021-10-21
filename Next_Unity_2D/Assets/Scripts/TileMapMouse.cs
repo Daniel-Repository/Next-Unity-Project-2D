@@ -43,7 +43,14 @@ public class TileMapMouse : MonoBehaviour {
 
         highlightPlaced = tilemapHighlight.HasTile(gridPos);
 
-        //When the learner clicks an available tile
+        /* CLICK TO PLACE GROUND TILE TEST
+        if (Input.GetMouseButtonDown(0)) {
+            tilemapGround.SetTile(gridPos, groundTile);
+            tileManager.addWorldTiles(gridPos);
+        }
+        */
+            
+        //When the user clicks an available tile
         if (Input.GetMouseButtonDown(0) && tilemapGround.HasTile(gridPos)) {
             if (tilesDict.TryGetValue(gridPos, out worldTiles)) {
                 //TILL GROUND
