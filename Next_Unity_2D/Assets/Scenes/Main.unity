@@ -399,10 +399,10 @@ MonoBehaviour:
   yellowSprout: {fileID: 11400000, guid: 34c6f61b0168e6c40ab59ad84f0831b9, type: 2}
   yellowFlower: {fileID: 11400000, guid: a34e19768ac79c54db344a4cdf4a57df, type: 2}
   tilledDeprecationTime: 30
-  grassGrowthTime: 60
-  weedsGrowthTime: 120
-  sproutGrowthTime: 60
-  flowerGrowthTime: 60
+  grassGrowthTime: 20
+  weedsGrowthTime: 20
+  sproutGrowthTime: 20
+  flowerGrowthTime: 20
 --- !u!4 &515818393
 Transform:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: 350}
+  m_AnchoredPosition: {x: -750, y: 450}
   m_SizeDelta: {x: 203.125, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018640144
